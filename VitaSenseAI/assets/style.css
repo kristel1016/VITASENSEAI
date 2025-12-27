@@ -1,0 +1,205 @@
+/* P A L L E T T E */
+
+:root {
+    --purple: #9E99D1;
+    --blue: #85BADA;
+    --pink: #DBAAD7;
+    --orange: #F6BEB1;
+    --yellow: #FFE3B3;
+    --bg-color: #F0F1F3;
+    --gray: #c4c5c9;
+    --light-pink: #fdf4f5;
+    --text-color: #000000;
+    --transparent: transparent;
+
+    --font-main: 'Playfair Display', Arial;
+    --font-sub: 'Inter', sans-serif;
+
+    --purple-blue-gradient: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+    --pink-yellow-gradient: linear-gradient(135deg, var(--pink) 0%, var(--yellow) 100%);
+    --yellow-purple-gradient: linear-gradient(135deg, var(--yellow) 0%, var(--purple) 100%);
+    --blue-pink-gradient: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    --orange-pink-gradient: linear-gradient(135deg, var(--orange) 0%, var(--pink) 100%);
+
+    --gradient: linear-gradient(135deg, var(--purple) 0%, var(--blue) 40%, var(--pink) 60%, var(--orange) 80%, var(--yellow) 100%, var(--purple) 100%);
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
+s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+figure, header, nav, section, article, aside, footer, figcaption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+header, nav, section, article, aside, footer, hgroup {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-main);
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+ul {
+  margin-bottom: 0px;
+}
+
+p {
+  font-family: var(--font-sub);
+  font-size: 14px;
+  line-height: 28px;
+  color: #4a4a4a;
+}
+
+img {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 
+---------------------------------------------
+Global Styles
+--------------------------------------------- 
+*/
+html,
+body {
+  font-family: var(--font-main);
+}
+
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: #555;
+}
+
+input, select {
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Button */
+button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Result Card */
+.result-card {
+    margin-top: 25px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    font-weight: 500;
+    color: #333;
+}
+
+.error {
+    color: red;
+    font-weight: 600;
+}
