@@ -177,19 +177,28 @@ form {
     flex-direction: row;
     justify-content: center;
     gap: 20px;
+  flex-wrap: wrap;
     margin-bottom: 15px;
 }
 
 label {
     display: flex;
     flex-direction: column;
-    align-items: center;
+  align-items: center;
     font-weight: 600;
     text-align: left;
     color: var(--gray);
-    width: 100%;
+  width: 100%;
 
     font-family: var(--font-main);
+}
+
+/* Make labels inside form rows behave as flexible columns so inputs
+   (dropdowns / number inputs) can grow/shrink with the container */
+.form-row > label {
+  flex: 1 1 0;
+  min-width: 150px;
+  width: auto;
 }
 
 
@@ -243,6 +252,7 @@ Custom Inputs
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  width: 100%;
   margin-bottom: 10px;
   box-shadow: -13px 13px 0 0 var(--dark_cyan);
   border: 1px solid var(--dark_cyan);
@@ -257,7 +267,8 @@ Custom Inputs
 }
 
 .number-input {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   height: 50px;
   background: var(--bg-color);
 
@@ -285,8 +296,8 @@ Custom Inputs
 }
 
 .number-btn {
-  width:50px;
-  height: 50px;
+  width: clamp(40px, 10vw, 50px);
+  height: 100%;
   padding: 5px;
   background-color: var(--bg-color);
   cursor: pointer;
