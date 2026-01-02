@@ -23,7 +23,7 @@ async function loadHealthData() {
         const healthData = await response.json();
 
         const animation = lottie.loadAnimation({
-            container: animationContainer, // The HTML element to render in
+            container: animationContainer, // The HTML element to render in 
             renderer: 'svg', // Or 'canvas' if preferred
             loop: true, // Loop the animation (adjust if needed)
             autoplay: true, // Start playing immediately
@@ -108,13 +108,26 @@ function initCustomNumberInputs() {
             input.value = precision ? v.toFixed(precision) : String(Math.round(v));
         }
 
-        // enforce non-negative / min on manual input
+        // enforce on manual input (allow partial and empty)
         input.addEventListener('input', () => {
             let val = parseFloat(input.value);
-            if (isNaN(val)) return; // allow empty while typing
-            if (val < minAttr) val = minAttr;
+            if (isNaN(val) || input.value === '' || input.value.endsWith('.')) return; // allow empty or partial decimals while typing
             if (maxAttr !== null && val > maxAttr) val = maxAttr;
-            input.value = precision ? val.toFixed(precision) : String(Math.round(val));
+            input.value = precision ? (val % 1 === 0 ? String(val) : val.toFixed(precision)) : String(Math.round(val));
+        });
+
+        // enforce min on blur
+        input.addEventListener('blur', () => {
+            let val = parseFloat(input.value);
+            if (isNaN(val) || input.value === '') {
+                input.value = String(minAttr);
+            } else if (input.value.endsWith('.')) {
+                input.value = String(val);
+            } else {
+                if (val < minAttr) val = minAttr;
+                if (maxAttr !== null && val > maxAttr) val = maxAttr;
+                input.value = precision ? (val % 1 === 0 ? String(val) : val.toFixed(precision)) : String(Math.round(val));
+            }
         });
         
         // Handle minus button (do not go below min)
@@ -258,9 +271,9 @@ form.addEventListener("submit", async (e) => {
                     <p><strong>${result.final_risk}</strong></p>
                 </div>
 
-                <div class="result-text">  
+                <div class="result-text">
                     <p>Confidence Level:</p>
-                    <p><strong>100%</strong></p>
+                    <p><strong>${result.confidence}%</strong></p>
                 </div>
                 
                 <hr>
