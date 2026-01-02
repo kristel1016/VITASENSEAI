@@ -10,7 +10,7 @@ import joblib
 os.makedirs("data", exist_ok=True)
 os.makedirs("models", exist_ok=True)
 
-dataset_path = "data/health_data.csv"
+dataset_path = "data/Lifestyle_and_Health_Risk_Prediction_Synthetic_Dataset.csv"
 
 if os.path.exists(dataset_path):
     df = pd.read_csv(dataset_path)
