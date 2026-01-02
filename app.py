@@ -45,6 +45,10 @@ def predict():
     pred = model.predict(features)[0]
     ml_risk = target_encoder.inverse_transform([pred])[0]
 
+    # Calculate confidence level based on prediction probabilities
+    pred_proba = model.predict_proba(features)[0]
+    confidence = round(max(pred_proba) * 100, 2)  # Confidence as percentage
+
     final_risk, explanation = krr_refinement(
         ml_risk,
         bmi,
@@ -56,6 +60,7 @@ def predict():
     return jsonify({
         "ml_prediction": ml_risk,
         "final_risk": final_risk,
+        "confidence": confidence,
         "explanation": explanation
     })
 
